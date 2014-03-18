@@ -1,0 +1,83 @@
+#N canvas 830 603 1014 683 10;
+#X declare -lib net;
+#X obj 579 377 sendOSC;
+#X floatatom 808 223 5 0 19 0 - - -;
+#X floatatom 933 223 5 0 19 0 - - -;
+#X msg 587 223 symbol /from;
+#X msg 719 223 symbol /note;
+#X msg 848 223 symbol /amp;
+#X msg 505 223 /to;
+#X obj 577 311 pack s 1 s 2 s 3 s 4;
+#X msg 579 343 send \$1 \$2 \$3 \$4 \$5 \$6 \$7 \$8;
+#X obj 919 16 import net;
+#X obj 78 226 osc/unpackOSC;
+#X obj 78 284 unpack 1 s 2 s 3 s 4;
+#X floatatom 78 321 5 0 0 0 - - -;
+#X floatatom 122 321 5 0 0 0 - - -;
+#X obj 78 254 osc/routeOSC /to;
+#X obj 636 378 print msg2send;
+#X obj 880 247 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 753 247 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 622 247 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 530 247 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 423 343 connect 127.0.0.1 22244;
+#X obj 423 318 loadbang;
+#X obj 933 196 inlet;
+#X obj 808 196 inlet;
+#X msg 681 223 \$0;
+#X floatatom 545 223 5 0 19 0 - - -;
+#X obj 545 196 inlet;
+#X obj 78 348 outlet;
+#X obj 122 348 outlet;
+#X obj 166 348 outlet;
+#X floatatom 166 321 5 0 0 0 - - -;
+#X floatatom 211 321 5 0 0 0 - - -;
+#X obj 211 348 outlet;
+#X obj 78 197 udpreceive 22245;
+#X text 76 20 a basic part of a network piece \, modeled after Tim
+Perkis's "Wax Lips". it requires that an OscGroupClient be running
+prior to instantiating this object. messages are received on port 22245
+\, and sent to port 22244;
+#X text 453 17 messages are of the form /to n /from n /note n /amp
+n where "n" is a number. for the /to part of the message this number
+is between 1 and 4 (it's the player number) \, for /from it's also
+another player number \, for /note and /amp it's a number between 0
+and 19 (an index into a table of 20 items).;
+#X connect 1 0 7 5;
+#X connect 1 0 17 0;
+#X connect 2 0 7 7;
+#X connect 2 0 16 0;
+#X connect 3 0 7 2;
+#X connect 4 0 7 4;
+#X connect 5 0 7 6;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
+#X connect 8 0 0 0;
+#X connect 8 0 15 0;
+#X connect 10 0 14 0;
+#X connect 11 0 12 0;
+#X connect 11 2 13 0;
+#X connect 11 4 30 0;
+#X connect 11 6 31 0;
+#X connect 12 0 27 0;
+#X connect 13 0 28 0;
+#X connect 14 0 11 0;
+#X connect 16 0 5 0;
+#X connect 17 0 4 0;
+#X connect 18 0 3 0;
+#X connect 19 0 6 0;
+#X connect 20 0 0 0;
+#X connect 21 0 20 0;
+#X connect 22 0 2 0;
+#X connect 23 0 1 0;
+#X connect 24 0 7 3;
+#X connect 24 0 18 0;
+#X connect 25 0 19 0;
+#X connect 26 0 25 0;
+#X connect 30 0 29 0;
+#X connect 31 0 32 0;
+#X connect 33 0 10 0;
