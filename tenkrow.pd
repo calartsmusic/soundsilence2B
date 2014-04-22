@@ -1,4 +1,4 @@
-#N canvas 286 22 1268 856 16;
+#N canvas 86 22 1268 856 16;
 #X declare -lib bsaylor;
 #X declare -lib maxlib;
 #X declare -lib ggee;
@@ -178,20 +178,20 @@
 #X connect 27 0 16 1;
 #X connect 28 0 17 2;
 #X connect 29 0 17 3;
-#X restore 369 272 pd mtchain;
-#X floatatom 388 205 5 0 0 0 - - -;
-#X text 388 181 attack;
-#X floatatom 455 205 5 0 0 0 - - -;
-#X text 455 181 decay;
-#X floatatom 523 205 5 0 0 0 - - -;
-#X text 523 181 delay;
-#X floatatom 596 205 5 0 1 0 - - -;
-#X text 591 181 sustain;
-#X floatatom 668 205 5 0 0 0 - - -;
-#X text 663 181 release;
-#X obj 369 329 dac~;
+#X restore 294 169 pd mtchain;
+#X floatatom 344 122 5 0 0 0 - - -;
+#X text 344 98 attack;
+#X floatatom 411 122 5 0 0 0 - - -;
+#X text 411 98 decay;
+#X floatatom 479 122 5 0 0 0 - - -;
+#X text 479 98 delay;
+#X floatatom 552 122 5 0 1 0 - - -;
+#X text 547 98 sustain;
+#X floatatom 624 122 5 0 0 0 - - -;
+#X text 619 98 release;
+#X obj 294 220 dac~;
 #X obj 13 -24 print from;
-#X obj 466 323 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 391 197 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X floatatom 132 -235 5 0 0 0 - - -;
 #X msg 74 59 set \$1;
@@ -263,16 +263,18 @@
 #X connect 21 0 29 0;
 #X connect 30 0 17 0;
 #X connect 30 0 28 0;
-#X restore 484 129 pd mycontrollers;
+#X restore 440 46 pd mycontrollers;
 #X msg 711 -243 172.20.121.194;
 #X obj 593 -209 osc_login 172.20.121.194 mark;
 #X obj 191 -105 network.2 /mark 57120;
 #X msg 345 -339 options daniel elliot james lisa arp mark;
 #X msg 75 -339 options arp elliot daniel james;
-#X floatatom 736 205 5 0 1 0 - - -;
-#X floatatom 808 205 5 0 0 0 - - -;
-#X text 731 162 filter freq;
-#X text 803 181 q;
+#X floatatom 692 122 5 0 1 0 - - -;
+#X floatatom 764 122 5 0 0 0 - - -;
+#X text 687 79 filter freq;
+#X text 759 98 q;
+#X obj 391 219 s trigger;
+#X obj 122 90 r trigger;
 #X connect 0 0 55 2;
 #X connect 1 0 55 3;
 #X connect 3 0 7 0;
@@ -294,7 +296,7 @@
 #X connect 24 0 21 0;
 #X connect 25 0 36 0;
 #X connect 25 1 38 0;
-#X connect 38 0 41 0;
+#X connect 38 0 62 0;
 #X connect 39 0 48 0;
 #X connect 40 0 41 0;
 #X connect 41 0 14 0;
@@ -326,3 +328,4 @@
 #X connect 56 0 5 0;
 #X connect 57 0 5 0;
 #X connect 57 0 8 0;
+#X connect 63 0 41 0;
